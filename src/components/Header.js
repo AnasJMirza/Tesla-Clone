@@ -26,10 +26,12 @@ const Header = () => {
             <RightManu>
                 <a href='#'>shop</a>
                 <a href='#'>account</a>
-
                 
+                <CustomManu onClick={()=> setSideBarState(true)} />
+                
+            </RightManu>
 
-                <SideBar show={sideBarState} >
+            <SideBar show={sideBarState} >
                     <CloseIconWrapper>
                         <CloseButton  onClick={()=> setSideBarState(false)} />
                     </CloseIconWrapper>
@@ -42,12 +44,7 @@ const Header = () => {
                     <li>Roadster</li>
                     <li>Used Inventory</li>
                     <li>Test Drive</li>
-                </SideBar>
-
-                
-                <CustomManu onClick={()=> setSideBarState(true)} />
-                
-            </RightManu>
+            </SideBar>
 
             
 
@@ -80,10 +77,16 @@ const Manu = styled.div`
     a {
         font-weight : 600;
         text-decoration : none;
-        font-size : 12px;
-        padding : 0px 12px;
+        font-size : 13px;
+        padding : 10px 15px;
         text-transform : uppercase;
         cursor : uppercase;
+    }
+
+    a:hover {
+        background-color : #e0e0e0;
+        // opacity : 0.1;
+        border-radius : 5px;
     }
 
     @media (max-width : 1000px){
@@ -100,8 +103,16 @@ const RightManu = styled.div`
         font-weight : 600;
         text-decoration : none;
         // padding-right : 25px;
-        padding : 0px 12px;
+        padding : 10px 15px;
         text-transform : uppercase;
+        font-size : 13px;
+        
+    }
+
+    a:hover {
+        background-color : #e0e0e0;
+        // opacity : 0.1;
+        border-radius : 5px;
     }
 
     @media (max-width : 1000px){
@@ -120,8 +131,9 @@ const CustomManu = styled(MenuIcon)`
 const SideBar = styled.div`
     position : fixed;
     top : 0;
-    right : 0;
     bottom : 0;
+    right : 0;
+    
 
     display : flex;
     flex-direction : column;
@@ -142,11 +154,13 @@ const SideBar = styled.div`
         width : 100%;
 
         display : flex;
-        justify-content : flex-start;    
+        justify-content : flex-start; 
+        
+        cursor : pointer;
     }
 
-    transform : ${props => props.show ? "translateX(0)" : "translateX(100%)"}
-    // transition : transform 0.2s ease-in; 
+    transform : ${props => props.show ? "translateX(0)" : "translateX(100%)"};
+    transition : transform 0.5s; 
 
 `
 
