@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import Fade from 'react-reveal/Fade';
 
 const Header = () => {
+
+    const [sideBarState, setSideBarState] = useState(false);
+
     return (
         <Container>
             <a href="#">
@@ -25,9 +29,9 @@ const Header = () => {
 
                 
 
-                <SideBar>
+                <SideBar show={sideBarState} >
                     <CloseIconWrapper>
-                        <CloseButton />
+                        <CloseButton  onClick={()=> setSideBarState(false)} />
                     </CloseIconWrapper>
                     <li>Model 3</li>
                     <li>Model S</li>
@@ -40,7 +44,9 @@ const Header = () => {
                     <li>Test Drive</li>
                 </SideBar>
 
-                <CustomManu />
+                
+                <CustomManu onClick={()=> setSideBarState(true)} />
+                
             </RightManu>
 
             
@@ -74,6 +80,7 @@ const Manu = styled.div`
     a {
         font-weight : 600;
         text-decoration : none;
+        font-size : 12px;
         padding : 0px 12px;
         text-transform : uppercase;
         cursor : uppercase;
@@ -127,7 +134,6 @@ const SideBar = styled.div`
     z-index : 100;
     // opacity : 0.8;
     
-
     li{
         padding : 15px 5px;
         border-bottom : 1px solid gray;
@@ -136,9 +142,12 @@ const SideBar = styled.div`
         width : 100%;
 
         display : flex;
-        justify-content : flex-start;
-        
+        justify-content : flex-start;    
     }
+
+    transform : ${props => props.show ? "translateX(0)" : "translateX(100%)"}
+    // transition : transform 0.2s ease-in; 
+
 `
 
 const CloseIconWrapper = styled.div`
@@ -149,5 +158,5 @@ const CloseIconWrapper = styled.div`
 `
 
 const CloseButton = styled(CloseIcon)`
-
+    cursor : pointer;
 `
