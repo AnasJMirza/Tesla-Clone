@@ -1,26 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import Fade from 'react-reveal/Fade';
 
 const Section = (props) => {
     return (
         <Wrap bgImage = {props.image}>
-            <TextComponent>
-                <h1> {props.title} </h1>
-                <p> {props.description} </p>
-            </TextComponent>
+            <Fade bottom>
+                <TextComponent>
+                    <h1> {props.title} </h1>
+                    <p> {props.description} </p>
+                </TextComponent>
+            </Fade>
 
             <Buttons>
-                <ButtonGroup>
-                    <LeftButton>
-                        {props.leftButton}
-                    </LeftButton>
+                <Fade bottom>
+                    <ButtonGroup>
+                        <LeftButton>
+                            {props.leftButton}
+                        </LeftButton>
 
-                    {props.rightButton &&
-                        <RightButton>
-                            {props.rightButton}
-                        </RightButton>
-                    }
-                </ButtonGroup>
+                        {props.rightButton &&
+                            <RightButton>
+                                {props.rightButton}
+                            </RightButton>
+                        }
+                    </ButtonGroup>
+                </Fade>
 
                 <DownArrow src="/images/images/down-arrow.svg" />
             </Buttons>
@@ -56,6 +61,12 @@ const Buttons = styled.div`
 const ButtonGroup = styled.div`
     display : flex;
     justify-content : center;
+    
+
+    @media (max-width : 768px){
+        flex-direction : column;
+        align-items : center;
+    }
 `
 
 const LeftButton = styled.div`
@@ -69,6 +80,7 @@ const LeftButton = styled.div`
     align-items : center;
     text-transform : uppercase;
     margin : 10px;
+    cursor : pointer;
 `
 
 const RightButton = styled(LeftButton)`
