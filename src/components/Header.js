@@ -14,7 +14,7 @@ const Header = () => {
                 <img src="/images/images/logo.svg"></img>
             </a>
 
-            <Manu>
+            <Manu   >
                 <a href='#'>Model 3</a>
                 <a href='#'>Model S</a>
                 <a href='#'>Model X</a>
@@ -31,7 +31,7 @@ const Header = () => {
                 
             </RightManu>
 
-            <SideBar show={sideBarState} >
+            <SideBar show={sideBarState}  >
                     <CloseIconWrapper>
                         <CloseButton  onClick={()=> setSideBarState(false)} />
                     </CloseIconWrapper>
